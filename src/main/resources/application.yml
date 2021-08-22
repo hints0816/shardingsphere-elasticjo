@@ -2,23 +2,23 @@ server:
   port: 8891
 spring:
   datasource:
-    driver-class-name: oracle.jdbc.OracleDriver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:oracle:thin:@10.2.25.123/ggrdattest
-    username: greescmdb2
-    password: passwd
+    url: jdbc:mysql://localhost:3306/blog_db?characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: hints0816
 shardingsphere:
   elasticjob:
     zk-config:
-      serverLists: 10.2.30.38:32311
+      serverLists: 47.119.167.128:2181
       namespace: my-job1
       baseSleepTimeMilliseconds: 3000
       maxSleepTimeMilliseconds: 4000
       maxRetries: 3
     trace-config:
       driverClass: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://10.2.30.38:3306/elastictrace?characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
-      username: elastic
-      password: Ela*Scm*123
+      url: jdbc:mysql://localhost:3306/blog_db?characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+      username: root
+      password: hints0816
 
 
