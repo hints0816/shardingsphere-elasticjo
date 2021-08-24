@@ -1,38 +1,24 @@
-# shardingsphere-elasticjob
-
+# shardingsphere-elasticjob-lite
 #### 介绍
-shardingsphere-elasticjob-demo
-封装数据源配置和zookeeper的配置以及所有api
+ElasticJob原来是当当网的分布式任务调度方案，从上年开始被Apache收购为子项目
+[elasticjob](https://shardingsphere.apache.org/elasticjob/ "elasticjob")
 
-#### 软件架构
-软件架构说明
+### ElasticJob-Lite
+![avatar](elastic_lite.png)
 
-
-#### 安装教程
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
+### ElasticJob-Cloud
+![avatar](elastic_cloud.png)
+`注：ElasticJob-Cloud支持资源分配，ElasticJob-Lite不支持资源分配`
+`注：ElasticJob-Cloud支持常驻，ElasticJob-Lite支持常驻+瞬时`
+#### 特性
+1. 弹性调度：将一个任务分片执行达到扩展
+2. 资源分配(elastic-cloud)：将资源根据任务进行分配，可以在ElasticJob-Cloud看到这里的资源特指的是k8s容器，
+将任务分配给容器进行执行，这个资源直接对任务进行定时任务的配置。
++ 常驻作业：不论运行时还是等待运行，一直占用资源
++ 瞬时作业：在每一次作业执行完毕后立刻释放资源
+3. 作业治理：失效转移，错过作业重新执行，自诊断修复
+4. 开放生态：spring整合，作业类型：数据流、脚本、文件、HTTP(V3.0新特性beta)
+5. 可视化管控端：docker pull apache/shardingsphere-elasticjob-lite-ui
 #### 使用说明
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request1
-
-
-#### 特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+1. zookeeper
+2. mysql
