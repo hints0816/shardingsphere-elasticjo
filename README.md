@@ -4,10 +4,10 @@ ElasticJob原来是当当网的分布式任务调度方案，从上年开始被A
 [elasticjob](https://shardingsphere.apache.org/elasticjob/ "elasticjob")
 
 ### ElasticJob-Lite
-![avatar](elastic_lite.png)
+![avatar](elasticjob_lite.png)
 
 ### ElasticJob-Cloud
-![avatar](elastic_cloud.png)
+![avatar](elasticjob_cloud.png)
 `注：ElasticJob-Cloud支持资源分配，ElasticJob-Lite不支持资源分配`
 `注：ElasticJob-Cloud支持常驻，ElasticJob-Lite支持常驻+瞬时`
 #### 特性
