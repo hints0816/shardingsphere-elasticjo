@@ -6,19 +6,19 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     url: jdbc:mysql://localhost:3306/blog_db?characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
     username: root
-    password: hints0816
+    password: password
 shardingsphere:
   elasticjob:
     zk-config:
-      serverLists: 47.119.167.128:2181
+      serverLists: 47.119.167.111:2181
       namespace: my-job1
-      baseSleepTimeMilliseconds: 3000
       maxSleepTimeMilliseconds: 4000
+        baseSleepTimeMilliseconds: 3000
       maxRetries: 3
     trace-config:
       driverClass: com.mysql.cj.jdbc.Driver
       url: jdbc:mysql://localhost:3306/blog_db?characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
       username: root
-      password: hints0816
+      password: password
 
 
