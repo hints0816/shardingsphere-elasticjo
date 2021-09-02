@@ -20,5 +20,33 @@ ElasticJob原来是当当网的分布式任务调度方案，从上年开始被A
 4. 开放生态：spring整合，作业类型：数据流、脚本、文件、HTTP(V3.0新特性beta)
 5. 可视化管控端：docker pull apache/shardingsphere-elasticjob-lite-ui
 #### 使用说明
-1. zookeeper
-2. mysql
+配置src/main/resources/application.yml
+```yaml
+server:
+# 端口号
+  port: 8893 
+spring:
+# 主业务数据源
+  datasource: 
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/blog_db?characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: password
+shardingsphere:
+  elasticjob:
+  # zookeeper配置
+    zk-config:
+      serverLists: 47.119.167.111:2181
+      namespace: my-job1
+      maxSleepTimeMilliseconds: 4000
+        baseSleepTimeMilliseconds: 3000
+      maxRetries: 3
+  # 作业追踪数据源
+    trace-config:
+      driverClass: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/blog_db?characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+      username: root
+      password: password
+
+```

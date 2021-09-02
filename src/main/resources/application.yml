@@ -9,7 +9,7 @@ spring:
     password: password
 shardingsphere:
   elasticjob:
-    zk-config:
+    zk-config: sad
       serverLists: 47.119.167.111:2181
       namespace: my-job1
       maxSleepTimeMilliseconds: 4000
