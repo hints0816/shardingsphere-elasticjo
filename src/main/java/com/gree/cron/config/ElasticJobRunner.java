@@ -3,6 +3,7 @@ package com.gree.cron.config;
 import com.gree.cron.dao.ElasticJobConfigDao;
 import com.gree.cron.entity.ElasticJobConfigBean;
 import com.gree.cron.task.MyJob2;
+import com.gree.cron.utils.SpringUtils;
 import com.gree.cron.utils.StringUtils;
 import org.apache.shardingsphere.elasticjob.api.ElasticJob;
 import org.apache.shardingsphere.elasticjob.api.JobConfiguration;
@@ -56,7 +57,13 @@ public class ElasticJobRunner implements CommandLineRunner {
             if (StringUtils.isNotEmpty(elasticJobConfigBean.getJobClass())) {
                 Class<? extends ElasticJob> jobClass = (Class<? extends ElasticJob>) Class
                         .forName(elasticJobConfigBean.getJobClass());
-                ElasticJob elasticJob = jobClass.newInstance();
+                ElasticJob elasticJob = null;
+                boolean b = SpringUtils.containsBean(jobClass.getSimpleName());
+                if (b) {
+                    elasticJob = (ElasticJob) SpringUtils.getBean(jobClass.getSimpleName());
+                } else {
+                    elasticJob = jobClass.newInstance();
+                }
                 if (elasticJob instanceof SimpleJob) {
                     new ScheduleJobBootstrap(zookeeperRegistryCenter, elasticJob, createJobConfiguration(elasticJobConfigBean)).schedule();
                 }
